@@ -1,6 +1,19 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
 function initializePage() {
-    // Initialize Firebase Auth (assuming Firebase has already been initialized)
-    const auth = firebase.auth();  // Get Firebase Auth instance
+    const firebaseConfig = {
+        apiKey: "AIzaSyC8EnxdK6hX5SalnvkZlpXdpIEVWf0qn4w",
+        authDomain: "violence-investigation.firebaseapp.com",
+        projectId: "violence-investigation",
+        storageBucket: "violence-investigation.appspot.com",
+        messagingSenderId: "219225688182",
+        appId: "1:219225688182:web:1f66a04fa1fbba4008b757"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
     // Ensure user is authenticated before proceeding
     const user = auth.currentUser;
