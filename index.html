@@ -5,27 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Firebase App (the core Firebase SDK) -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <!-- Firebase App (the core Firebase SDK) as a module -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     
-    <!-- Firebase Authentication -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-        <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-  apiKey: "AIzaSyC8EnxdK6hX5SalnvkZlpXdpIEVWf0qn4w",
-  authDomain: "violence-investigation.firebaseapp.com",
-  projectId: "violence-investigation",
-  storageBucket: "violence-investigation.appspot.com",
-  messagingSenderId: "219225688182",
-  appId: "1:219225688182:web:1f66a04fa1fbba4008b757",
-  measurementId: "G-4X8CP49CNP"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
+    <!-- Firebase Authentication as a module -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
 
     <title>Login</title>
 </head>
@@ -38,10 +22,43 @@
         </form>
     </div>
 
-    <script>
-        console.log(typeof firebase);  // This should output "object"
-    </script>
-    <script src="js/auth.js?v=1.0"></script>
+    <!-- Inline Firebase Initialization -->
+    <script type="module">
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "YOUR_AUTH_DOMAIN",
+          projectId: "YOUR_PROJECT_ID",
+          storageBucket: "YOUR_STORAGE_BUCKET",
+          messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+          appId: "YOUR_APP_ID"
+        };
 
+        // Initialize Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        const app = initializeApp(firebaseConfig);
+
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        const auth = getAuth(app);
+
+        // Handle Login Form Submission
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                  // User signed in
+                  const user = userCredential.user;
+                  // Redirect to videos.html
+                  window.location.href = "videos.html";
+              })
+              .catch((error) => {
+                  alert(error.message);
+              });
+        });
+    </script>
 </body>
 </html>
