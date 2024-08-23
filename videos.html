@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/videos.js"></script>
+    <title>Videos</title>
+</head>
+<body>
+    <div class="video-list-container">
+        <ul id="videoList"></ul>
+    </div>
+    <div class="video-player-container">
+        <video id="videoPlayer" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-info-form-container">
+        <form id="videoInfoForm">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="text" id="description" placeholder="Brief Description" required>
+            <input type="text" id="location" placeholder="Location" required>
+            <input type="date" id="date" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
