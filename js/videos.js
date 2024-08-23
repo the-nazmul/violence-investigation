@@ -1,6 +1,5 @@
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
-const auth = getAuth();  // Initialize Firebase Auth
+// Initialize Firebase Auth (assuming Firebase has already been initialized)
+const auth = firebase.auth();  // Get Firebase Auth instance
 
 // Ensure user is authenticated before proceeding
 const user = auth.currentUser;
